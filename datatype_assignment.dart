@@ -1,3 +1,6 @@
+import 'dart:io';
+
+
 void main() {
   // Number 1: Write a program that prints out all the elements of the list that are less than 5.
   List a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
@@ -28,13 +31,46 @@ void main() {
   List result = getFirstAndLastElements(inputList);
   print("New list: $result");
 
+//Number 5:
+  print("Please enter a long string containing multiple words:");
+  String theString = stdin.readLineSync()!;
+  String reversedString = reverseWords(theString);
+  print("Reversed string: $reversedString");
+
+  //Number 6:Write a program (function) that takes a list and returns a new list that contains all the elements of the first list minus all the duplicates.
+
+  List inputListWithDuplicates = [1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 18, 18];
+  List listWithoutDuplicates = removeDuplicates(inputListWithDuplicates);
+  print("List without duplicates: $listWithoutDuplicates");
+
+
+  //Number 7
+  //Since with json each key should be unique, i used an array to represent the multiple birthdays in each month
+  String jsonData = '''   
+   {
+    "May": [3, 5],
+    "November": [2],
+    "December": [1, 4, 2]
+  }
+  ''';
 }
 
+// Functions
+
+//Function for reversing
+String reverseWords(String input) {
+  List words = input.split(' ');
+  List reversedWords = words.reversed.toList();
+  return reversedWords.join(' ');
+}
+
+// Function for finding common elements
 List findCommonElements(List list1, List list2) {
   Set set1 = list1.toSet(); // I converted to sets to remove duplicates
   Set set2 = list2.toSet();
-  
-  Set intersection = set1.intersection(set2); // Find the intersection of the two sets (common elements)
+
+  Set intersection = set1.intersection(
+      set2); // Find the intersection of the two sets (common elements)
   List commonElements = intersection.toList();
 
   return commonElements;
@@ -55,7 +91,20 @@ List getFirstAndLastElements(List list) {
   if (list.isEmpty) {
     return [];
   } else {
-    
     return [list.first, list.last];
   }
 }
+
+List removeDuplicates(List list) {
+  // Using a Set to remove duplicates while preserving the order of elements
+  Set uniqueElements = list.toSet();
+
+  List listWithoutDuplicates = uniqueElements.toList();
+
+  return listWithoutDuplicates;
+}
+
+
+
+
+
