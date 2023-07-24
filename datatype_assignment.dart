@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'dart:convert';
 
 void main() {
   // Number 1: Write a program that prints out all the elements of the list that are less than 5.
@@ -53,7 +53,50 @@ void main() {
     "December": [1, 4, 2]
   }
   ''';
+  // Parse the JSON data
+  Map<String, dynamic> birthdayData = json.decode(jsonData);
+
+  // Task A: Extract the months of all the birthdays
+  List<String> months = birthdayData.keys.toList();
+
+  // Task B: Count how many birthdays in each month
+  Map<String, int> birthdayCount = {};
+  for (var entry in birthdayData.entries) {
+    birthdayCount[entry.key] = entry.value.length;
+  }
+
+  // Task C: Find the month with the highest and lowest number of birthdays
+  String highestMonth = "";
+  String lowestMonth = "";
+  int highestCount = 0;
+  int lowestCount = 999999;
+
+  for (var entry in birthdayCount.entries) {
+    if (entry.value > highestCount) {
+      highestCount = entry.value;
+      highestMonth = entry.key;
+    }
+
+    if (entry.value < lowestCount) {
+      lowestCount = entry.value;
+      lowestMonth = entry.key;
+    }
+  }
+
+  // Display the results
+  print("Months of all the birthdays: $months");
+  print("Birthdays count for each month: $birthdayCount");
+  print("Month with the highest number of birthdays: $highestMonth ($highestCount birthdays)");
+  print("Month with the lowest number of birthdays: $lowestMonth ($lowestCount birthdays)");
+
 }
+
+
+
+
+
+
+
 
 // Functions
 
