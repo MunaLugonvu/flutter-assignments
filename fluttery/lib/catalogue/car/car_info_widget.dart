@@ -22,7 +22,7 @@ class CarInfoWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text('Number Plate: ${car.numberPlate}'),
             Text('Color: ${car.color}'),
