@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'checkInput/input.dart';
+import 'checkInput/input_export.dart';
 
 void main() {
   runApp(const MyApp());
